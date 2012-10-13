@@ -18,9 +18,9 @@ class Prueba extends CI_Controller {
 
 	public function encuentra()
 	{
-		$m = new Mongo();
-		$db = $m->dare;
-		
+		//$m = new Mongo();
+		//$db = $m->dare;
+		$db = mongo_connect();
 		//$collection = $db->prueba;
 		//$cursor = $collection->find();
 		//foreach ($cursor as $obj) {
