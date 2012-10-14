@@ -30,8 +30,8 @@ class Pregunta extends CI_Controller {
 		}
 		else 
 		{
-			$tags = array_map('htmlentities' ,array_map('strtolower', array_map('trim', explode(',',$_POST[tags]))));
-			$q = $db->pregunta->save(array('titulo' => htmlentities($_POST['titulo'], ENT_QUOTES), 'pregunta' => htmlentities($_POST['pregunta'], ENT_QUOTES), 'tags' => $tags));
+			$tags = array_map('htmlspecialchars' ,array_map('strtolower', array_map('trim', explode(',',$_POST[tags]))),array(ENT_QUOTES));
+			$q = $db->pregunta->save(array('titulo' => htmlspecialchars($_POST['titulo'], ENT_QUOTES), 'pregunta' => htmlspecialchars($_POST['pregunta'], ENT_QUOTES), 'tags' => $tags));
 			foreach ($db->pregunta->find()->sort(array('_id'=> -1))->limit(1) as $obj) {
 	    		$id = $obj[_id];
 			}

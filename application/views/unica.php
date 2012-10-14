@@ -1,5 +1,5 @@
 <?php
-
+echo "retráñ";
 echo heading($titulo, 3);
 echo '<hr />';
 echo '<div class="well">'.$pregunta.'</div>'.br();
