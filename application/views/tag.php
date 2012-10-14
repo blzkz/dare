@@ -2,5 +2,5 @@
 
 foreach ($questions as $question)
 {
-	print_r($question);
+	echo anchor('pregunta/ver/'.$question['_id'],$question['titulo']).br();
 }
