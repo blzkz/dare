@@ -2,12 +2,12 @@
 
 echo heading($titulo, 3);
 echo '<hr />';
-echo $pregunta.br();
+echo '<div class="well">'.$pregunta.'</div>'.br();
 if (isset($tags))
 {
 	foreach ($tags as $tag)
 	{
-		echo $tag." ";
+		echo anchor('tags/tag/'.$tag, $tag, 'class = "badge badge-warning"');
 	}
 }
 ?>
