@@ -29,6 +29,11 @@ class Pregunta extends CI_Controller {
 	// Para ver una pregunta en concreto
 	public function ver()
 	{
+		$uri = explode('/', uri_string());
+		$db = mongo_connect();
+		$question = $db->pregunta->findOne(array('_id' => new MongoId($uri[2])));		
+		echo $question['titulo']."<br>";
+		echo $question['pregunta'];
 
 	}
 
