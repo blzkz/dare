@@ -11,6 +11,6 @@ foreach ($tags as $tag)
 	{
 		echo "<span style='font-size:";
 		echo $size;
-		echo "px'>".anchor('tags/tag/'.$tag['tag'],$tag['tag']).'</span> ';
+		echo "px'>".anchor('tags/tag/'.$tag['tag'],$tag['tag'],'class = "badge badge-warning"').'</span> ';
 	}
-}
+} ?>
