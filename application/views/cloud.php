@@ -3,7 +3,7 @@
 foreach ($tags as $tag)
 {
 	$size = ($tag['count']/10);
-	$size++;
+	$size = $size+1;
 	$size = 15*$size;
 	if ($size > 80)
 		$size = 80;
@@ -11,6 +11,6 @@ foreach ($tags as $tag)
 	{
 		echo "<span style='font-size:";
 		echo $size;
-		echo "px'>".anchor('tags/tag/'.$tag['tag'],$tag['tag'],'class = "badge badge-warning"').'</span> ';
+		echo "px'>".anchor('tags/tag/'.$tag['tag'],$tag['tag']).'</span> ';
 	}
 } ?>

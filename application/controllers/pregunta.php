@@ -30,10 +30,20 @@ class Pregunta extends CI_Controller {
 		}
 		else 
 		{
-			$tags = array_map('htmlspecialchars' ,array_map('strtolower', array_map('trim', explode(',',$_POST[tags]))),array(ENT_QUOTES));
+			$i = 0;
+			$tags = array_map('trim', explode(',',$_POST['tags']));
+			//$tags = array_map('mb_strtolower', $tags, 'UTF-8');
+			//$tags = array_map('strtolower', $tags);
+			foreach ($tags as $tag)
+			{
+				$tag = mb_strtolower($tag,'UTF-8');
+				$tags[$i] = htmlspecialchars($tag, ENT_QUOTES);
+				$i++;
+			}
+		//	$tags = array_map('htmlspecialchars' , $tags);
 			$q = $db->pregunta->save(array('titulo' => htmlspecialchars($_POST['titulo'], ENT_QUOTES), 'pregunta' => htmlspecialchars($_POST['pregunta'], ENT_QUOTES), 'tags' => $tags));
 			foreach ($db->pregunta->find()->sort(array('_id'=> -1))->limit(1) as $obj) {
-	    		$id = $obj[_id];
+	    		$id = $obj['_id'];
 			}
 			foreach ($tags as $tag)
 			{
@@ -44,7 +54,7 @@ class Pregunta extends CI_Controller {
 				}
 				else
 				{
-					$db->tags->save(array('count' => ($db_tag['count'] + 1)));
+					$db->tags->update(array('tag' => $tag), array('$set' => array('count' => ($db_tag['count'] + 1))));
 				}
 			}
 
